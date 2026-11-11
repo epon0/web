@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Bistrot & Café | Authentic Dining Experience</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            DEFAULT: '#D4AF37',
+                            light: '#F3E5AB',
+                            dark: '#AA8C2C',
+                        },
+                        darkBg: '#121212',
+                        cardBg: '#1E1E1E',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        h1, h2, h3, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-gray-100 selection:bg-gold selection:text-black">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-darkBg/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="text-2xl font-serif font-bold text-gold tracking-wider flex items-center gap-2">
+                <i class="fa-solid fa-wine-glass-alt"></i> Le Bistrot
+            </a>
+
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#menu" class="hover:text-gold transition nav-menu">Menu</a>
+                <a href="#about" class="hover:text-gold transition nav-about">Tentang Kami</a>
+                <a href="#features" class="hover:text-gold transition nav-features">Fasilitas & Keunggulan</a>
+                <a href="#reservation" class="hover:text-gold transition nav-reservation">Reservasi</a>
+            </div>
+
+            <!-- Language Switcher & CTA -->
+            <div class="flex items-center gap-4">
+                <div class="flex bg-white/10 rounded-full p-1 text-xs font-semibold">
+                    <button onclick="setLang('id')" id="btn-id" class="px-3 py-1 rounded-full bg-gold text-black transition">ID</button>
+                    <button onclick="setLang('en')" id="btn-en" class="px-3 py-1 rounded-full text-gray-300 hover:text-white transition">EN</button>
+                    <button onclick="setLang('fr')" id="btn-fr" class="px-3 py-1 rounded-full text-gray-300 hover:text-white transition">FR</button>
+                </div>
+                <a href="#reservation" class="hidden sm:inline-block bg-gold hover:bg-gold-light text-black font-semibold px-5 py-2.5 rounded-full text-sm transition shadow-lg shadow-gold/20 nav-book">
+                    Pesan Meja
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center bg-cover bg-center pt-20" style="background-image: linear-gradient(to bottom, rgba(18,18,18,0.7), rgba(18,18,18,0.95)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80');">
+        <div class="max-w-4xl mx-auto text-center px-4 py-20 z-10">
+            <span class="text-gold uppercase tracking-[0.3em] text-sm font-semibold mb-4 inline-block hero-subtitle">Selamat Datang di Pengalaman Kuliner Terbaik</span>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold font-serif mb-6 text-white leading-tight">
+                Kelezatan Klasik Prancis & <span class="text-gold italic">Suasana Nyaman</span>
+            </h1>
+            <p class="text-gray-300 text-lg sm:text-xl mb-10 max-w-2xl mx-auto hero-desc">
+                Nikmati hidangan istimewa, koktail pilihan, kopi nikmat, dan alunan musik live di tempat terbaik kota ini.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#menu" class="w-full sm:w-auto bg-gold hover:bg-gold-light text-black font-bold px-8 py-4 rounded-full text-base transition shadow-xl shadow-gold/20 btn-view-menu">
+                    Lihat Menu Kami
+                </a>
+                <a href="https://maps.app.goo.gl/79c6b7ZF79oWPw4P8" target="_blank" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-full text-base transition border border-white/20 flex items-center justify-center gap-2 btn-map">
+                    <i class="fa-solid fa-location-dot text-gold"></i> Buka di Google Maps
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Highlights Grid -->
+    <section class="py-16 bg-cardBg border-y border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="p-4">
+                <i class="fa-solid fa-wheelchair text-3xl text-gold mb-3"></i>
+                <h3 class="font-bold text-lg mb-1 access-title">Aksesibel</h3>
+                <p class="text-sm text-gray-400 access-desc">Ramah kursi roda & fasilitas lengkap</p>
+            </div>
+            <div class="p-4">
+                <i class="fa-solid fa-wifi text-3xl text-gold mb-3"></i>
+                <h3 class="font-bold text-lg mb-1 wifi-title">Wi-Fi Gratis</h3>
+                <p class="text-sm text-gray-400 wifi-desc">Koneksi cepat untuk kenyamanan Anda</p>
+            </div>
+            <div class="p-4">
+                <i class="fa-solid fa-champagne-glasses text-3xl text-gold mb-3"></i>
+                <h3 class="font-bold text-lg mb-1 bar-title">Koktail & Anggur</h3>
+                <p class="text-sm text-gray-400 bar-desc">Pilihan minuman premium berkualitas</p>
+            </div>
+            <div class="p-4">
+                <i class="fa-solid fa-dog text-3xl text-gold mb-3"></i>
+                <h3 class="font-bold text-lg mb-1 pet-title">Ramah Hewan</h3>
+                <p class="text-sm text-gray-400 pet-desc">Anjing diperbolehkan masuk</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <span class="text-gold uppercase tracking-[0.2em] text-sm font-semibold menu-tag">Menu Pilihan</span>
+            <h2 class="text-4xl font-bold font-serif mt-2 menu-heading">Katalog Hidangan & Minuman</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- À Table -->
+            <div class="bg-cardBg p-8 rounded-2xl border border-white/10 shadow-xl">
+                <h3 class="text-2xl font-serif font-bold text-gold mb-6 pb-3 border-b border-white/10 flex items-center justify-between">
+                    <span>À Table</span>
+                    <i class="fa-solid fa-utensils text-sm"></i>
+                </h3>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-lg font-semibold text-white mb-3">Plat du jour & Salades</h4>
+                        <div class="space-y-3 text-sm text-gray-300">
+                            <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                                <span>Plat du jour (Voir ardoise)</span>
+                                <span class="text-gold font-semibold">Bervariasi</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                                <span>Salade Mixte</span>
+                                <span class="text-gold font-semibold">6.5 / 9.0</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                                <span>Salade Chèvre chaud</span>
+                                <span class="text-gold font-semibold">9.5 / 13.5</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-semibold text-white mb-3">Soupe du jour & Croque-Monsieur</h4>
+                        <div class="space-y-3 text-sm text-gray-300">
+                            <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                                <span>Soupe du jour (La Bolhette / Le Bol)</span>
+                                <span class="text-gold font-semibold">5.0 / 8.5</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                                <span>Croque-Monsieur Traditionnel</span>
+                                <span class="text-gold font-semibold">7.5 / 11.5</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                                <span>Croque-Monsieur Crème de truffe</span>
+                                <span class="text-gold font-semibold">8.5 / 12.5</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                                <span>Croque-Monsieur Époisses</span>
+                                <span class="text-gold font-semibold">8.5 / 12.5</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-semibold text-white mb-3">Bruschetta & À Partager</h4>
+                        <div class="space-y-3 text-sm text-gray-300">
+                            <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                                <span>Bruschetta simple / double</span>
+                                <span class="text-gold font-semibold">6.5 - 13.5</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                                <span>Terrine ou pâté du moment / Planche</span>
+                                <span class="text-gold font-semibold">Voir ardoise</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- À Gourmandiser & À Boire -->
+            <div class="space-y-12">
+                <!-- À Gourmandiser -->
+                <div class="bg-cardBg p-8 rounded-2xl border border-white/10 shadow-xl">
+                    <h3 class="text-2xl font-serif font-bold text-gold mb-6 pb-3 border-b border-white/10 flex items-center justify-between">
+                        <span>À Gourmandiser</span>
+                        <i class="fa-solid fa-ice-cream text-sm"></i>
+                    </h3>
+                    <div class="space-y-3 text-sm text-gray-300">
+                        <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                            <span>Café / Thé gourmand</span>
+                            <span class="text-gold font-semibold">7.5 / 10.5</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                            <span>Pâtisserie du jour (Tarte au citron meringuée, etc.)</span>
+                            <span class="text-gold font-semibold">5.5 - 9.5</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                            <span>Macarons (parfum au choix)</span>
+                            <span class="text-gold font-semibold">1.5</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                            <span>Coupes Glacées (Dame blanche, After Eight, Colonel, dll)</span>
+                            <span class="text-gold font-semibold">6.5 - 8.5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- À Boire -->
+                <div class="bg-cardBg p-8 rounded-2xl border border-white/10 shadow-xl">
+                    <h3 class="text-2xl font-serif font-bold text-gold mb-6 pb-3 border-b border-white/10 flex items-center justify-between">
+                        <span>À Boire & Cocktails</span>
+                        <i class="fa-solid fa-wine-bottle text-sm"></i>
+                    </h3>
+                    <div class="space-y-3 text-sm text-gray-300">
+                        <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                            <span>Bières Bouteille (Heineken, 1664, Desperados, Leffe)</span>
+                            <span class="text-gold font-semibold">3.5 - 6.5</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                            <span>Bières Locales Bio 33cl (Vézelay)</span>
+                            <span class="text-gold font-semibold">8.0</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                            <span>Vins (Verre / Pamplemousse / Pichet / Bouteille)</span>
+                            <span class="text-gold font-semibold">4.0 - 13.5</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                            <span>Apéritifs & Cocktails (Kir, Spritz, Champagne)</span>
+                            <span class="text-gold font-semibold">5.0 - 9.5</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                            <span>Spiritueux & Digestifs (Gin, Vodka, Rhum Don Papa, Whisky)</span>
+                            <span class="text-gold font-semibold">7.0 - 8.5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features & Amenities -->
+    <section id="features" class="py-24 bg-cardBg border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-gold uppercase tracking-[0.2em] text-sm font-semibold facilities-tag">Fasilitas Lengkap</span>
+                <h2 class="text-4xl font-bold font-serif mt-2 facilities-heading">kenyamanan & Layanan Terbaik</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-darkBg p-8 rounded-xl border border-white/10">
+                    <div class="text-gold text-2xl mb-4"><i class="fa-solid fa-circle-check"></i></div>
+                    <h3 class="text-xl font-bold mb-4 facilities-acc-title">Aksesibilitas</h3>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i> Kursi khusus pengguna kursi roda</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i> Pintu masuk khusus kursi roda</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i> Tempat parkir khusus kursi roda</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i> Toilet khusus kursi roda</li>
+                    </ul>
+                </div>
+
+                <div class="bg-darkBg p-8 rounded-xl border border-white/10">
+                    <div class="text-gold text-2xl mb-4"><i class="fa-solid fa-star"></i></div>
+                    <h3 class="text-xl font-bold mb-4 facilities-highlights-title">Keunggulan & Suasana</h3>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i> Koktail, Kopi & Pilihan Anggur Enak</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i> Musik Live & Suasana Nyaman</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i> Tempat duduk di area terbuka (Outdoor)</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i> Ramah anak-anak & Keluarga</li>
+                    </ul>
+                </div>
+
+                <div class="bg-darkBg p-8 rounded-xl border border-white/10">
+                    <div class="text-gold text-2xl mb-4"><i class="fa-solid fa-credit-card"></i></div>
+                    <h3 class="text-xl font-bold mb-4 facilities-payment-title">Pembayaran & Lainnya</h3>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i> Kartu debit & Kartu kredit</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i> Pembayaran seluler dengan NFC</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i> Tempat parkir gratis & di jalan</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i> Anjing boleh masuk (Pet friendly)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation" class="py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-cardBg p-8 sm:p-12 rounded-3xl border border-white/10 shadow-2xl relative overflow-hidden">
+            <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-gold/5 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="text-center mb-10">
+                <span class="text-gold uppercase tracking-[0.2em] text-sm font-semibold res-tag">Reservasi Meja</span>
+                <h2 class="text-3xl sm:text-4xl font-bold font-serif mt-2 res-heading">Rencanakan Kunjungan Anda</h2>
+                <p class="text-gray-400 text-sm mt-2 res-desc">Isi formulir di bawah ini untuk memesan meja dengan cepat dan mudah.</p>
+            </div>
+
+            <form onsubmit="handleReservation(event)" class="space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2 name-label">Nama Lengkap</label>
+                        <input type="text" required class="w-full bg-darkBg border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold transition" placeholder="Masukkan nama Anda">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2 phone-label">Nomor Telepon / WhatsApp</label>
+                        <input type="tel" required class="w-full bg-darkBg border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold transition" placeholder="Contoh: 08123456789">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2 date-label">Tanggal</label>
+                        <input type="date" required class="w-full bg-darkBg border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2 time-label">Waktu</label>
+                        <input type="time" required class="w-full bg-darkBg border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2 guests-label">Jumlah Tamu</label>
+                        <select class="w-full bg-darkBg border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold transition">
+                            <option>1 Orang</option>
+                            <option>2 Orang</option>
+                            <option>3 - 4 Orang</option>
+                            <option>5+ Orang (Berkelompok)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2 notes-label">Catatan Khusus (Opsional)</label>
+                    <textarea rows="3" class="w-full bg-darkBg border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold transition" placeholder="Permintaan khusus, alergi makanan, atau tempat duduk outdoor..."></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-gold hover:bg-gold-light text-black font-bold py-4 rounded-xl transition shadow-lg shadow-gold/20 submit-btn">
+                    Konfirmasi Reservasi Meja
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-cardBg border-t border-white/10 py-12 text-center text-sm text-gray-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+            <h3 class="text-2xl font-serif font-bold text-gold">Le Bistrot & Café</h3>
+            <p class="max-w-md mx-auto footer-desc">Tempat bersantai terbaik dengan hidangan otentik Prancis, koktail pilihan, dan suasana hangat yang menyenangkan.</p>
+            <div class="flex justify-center gap-6 text-lg pt-2">
+                <a href="https://maps.app.goo.gl/79c6b7ZF79oWPw4P8" target="_blank" class="hover:text-gold transition"><i class="fa-solid fa-location-dot"></i></a>
+                <a href="#" class="hover:text-gold transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-gold transition"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+            <p class="pt-6 border-t border-white/10 text-xs text-gray-500">&copy; 2026 Le Bistrot. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Multi-language & Interactivity -->
+    <script>
+        const translations = {
+            id: {
+                navMenu: "Menu", navAbout: "Tentang Kami", navFeatures: "Fasilitas & Keunggulan", navReservations: "Reservasi", navBook: "Pesan Meja",
+                heroSub: "Selamat Datang di Pengalaman Kuliner Terbaik",
+                heroTitle: "Kelezatan Klasik Prancis & <span class='text-gold italic'>Suasana Nyaman</span>",
+                heroDesc: "Nikmati hidangan istimewa, koktail pilihan, kopi nikmat, dan alunan musik live di tempat terbaik kota ini.",
+                btnMenu: "Lihat Menu Kami", btnMap: "Buka di Google Maps",
+                accTitle: "Aksesibel", accDesc: "Ramah kursi roda & fasilitas lengkap",
+                wifiTitle: "Wi-Fi Gratis", wifiDesc: "Koneksi cepat untuk kenyamanan Anda",
+                barTitle: "Koktail & Anggur", barDesc: "Pilihan minuman premium berkualitas",
+                petTitle: "Ramah Hewan", petDesc: "Anjing diperbolehkan masuk",
+                menuTag: "Menu Pilihan", menuHeading: "Katalog Hidangan & Minuman",
+                facTag: "Fasilitas Lengkap", facHeading: "Kenyamanan & Layanan Terbaik",
+                facAcc: "Aksesibilitas", facHigh: "Keunggulan & Suasana", facPay: "Pembayaran & Lainnya",
+                resTag: "Reservasi Meja", resHeading: "Rencanakan Kunjungan Anda", resDesc: "Isi formulir di bawah ini untuk memesan meja dengan cepat dan mudah.",
+                nameLbl: "Nama Lengkap", phoneLbl: "Nomor Telepon / WhatsApp", dateLbl: "Tanggal", timeLbl: "Waktu", guestsLbl: "Jumlah Tamu", notesLbl: "Catatan Khusus (Opsional)", submitBtn: "Konfirmasi Reservasi Meja",
+                footerDesc: "Tempat bersantai terbaik dengan hidangan otentik Prancis, koktail pilihan, dan suasana hangat yang menyenangkan."
+            },
+            en: {
+                navMenu: "Menu", navAbout: "About Us", navFeatures: "Amenities & Highlights", navReservations: "Reservation", navBook: "Book a Table",
+                heroSub: "Welcome to the Ultimate Dining Experience",
+                heroTitle: "Classic French Delicacies & <span class='text-gold italic'>Cozy Atmosphere</span>",
+                heroDesc: "Enjoy exceptional dishes, curated cocktails, fine coffee, and live music in the finest spot in town.",
+                btnMenu: "View Our Menu", btnMap: "Open in Google Maps",
+                accTitle: "Accessible", accDesc: "Wheelchair friendly & complete facilities",
+                wifiTitle: "Free Wi-Fi", wifiDesc: "High-speed connection for your convenience",
+                barTitle: "Cocktails & Wine", barDesc: "Premium quality beverage selection",
+                petTitle: "Pet Friendly", petDesc: "Dogs are welcome inside",
+                menuTag: "Selected Menu", menuHeading: "Food & Drinks Catalog",
+                facTag: "Full Amenities", facHeading: "Comfort & Best Services",
+                facAcc: "Accessibility", facHigh: "Highlights & Vibe", facPay: "Payment & Others",
+                resTag: "Table Reservation", resHeading: "Plan Your Visit", resDesc: "Fill out the form below to book your table quickly and easily.",
+                nameLbl: "Full Name", phoneLbl: "Phone / WhatsApp Number", dateLbl: "Date", timeLbl: "Time", guestsLbl: "Number of Guests", notesLbl: "Special Notes (Optional)", submitBtn: "Confirm Table Reservation",
+                footerDesc: "The best place to relax with authentic French dishes, curated cocktails, and a warm, delightful atmosphere."
+            },
+            fr: {
+                navMenu: "Menu", navAbout: "À propos", navFeatures: "Équipements", navReservations: "Réservation", navBook: "Réserver",
+                heroSub: "Bienvenue dans une expérience culinaire d'exception",
+                heroTitle: "Délices Français Classiques & <span class='text-gold italic'>Ambiance Chaleureuse</span>",
+                heroDesc: "Savourez des plats d'exception, des cocktails raffinés, du bon café et de la musique live dans le meilleur endroit.",
+                btnMenu: "Voir le Menu", btnMap: "Ouvrir sur Google Maps",
+                accTitle: "Accessible", accDesc: "Adapté aux fauteuils roulants & complet",
+                wifiTitle: "Wi-Fi Gratuit", wifiDesc: "Connexion haut débit pour votre confort",
+                barTitle: "Cocktails & Vins", barDesc: "Sélection de boissons de premier choix",
+                petTitle: "Animaux Bienvenus", petDesc: "Les chiens sont admis à l'intérieur",
+                menuTag: "Menu Sélectionné", menuHeading: "Catalogue des Plats & Boissons",
+                facTag: "Équipements Complets", facHeading: "Confort & Meilleurs Services",
+                facAcc: "Accessibilité", facHigh: "Points Forts & Ambiance", facPay: "Paiement & Autres",
+                resTag: "Réservation de Table", resHeading: "Planifiez Votre Visite", resDesc: "Remplissez le formulaire ci-dessous pour réserver votre table.",
+                nameLbl: "Nom Complet", phoneLbl: "Numéro de Téléphone / WhatsApp", dateLbl: "Date", timeLbl: "Heure", guestsLbl: "Nombre de Personnes", notesLbl: "Notes Particulières (Optionnel)", submitBtn: "Confirmer la Réservation",
+                footerDesc: "Le meilleur endroit pour se détendre avec des plats français authentiques et une atmosphère chaleureuse."
+            }
+        };
+
+        function setLang(lang) {
+            // Update buttons
+            ['id', 'en', 'fr'].forEach(l => {
+                const btn = document.getElementById(`btn-${l}`);
+                if(l === lang) {
+                    btn.className = "px-3 py-1 rounded-full bg-gold text-black transition font-semibold";
+                } else {
+                    btn.className = "px-3 py-1 rounded-full text-gray-300 hover:text-white transition";
+                }
+            });
+
+            const t = translations[lang];
+            document.querySelector('.nav-menu').innerText = t.navMenu;
+            document.querySelector('.nav-about').innerText = t.navAbout;
+            document.querySelector('.nav-features').innerText = t.navFeatures;
+            document.querySelector('.nav-reservation').innerText = t.navReservations;
+            document.querySelector('.nav-book').innerText = t.navBook;
+            
+            document.querySelector('.hero-subtitle').innerText = t.heroSub;
+            document.querySelector('header h1').innerHTML = t.heroTitle;
+            document.querySelector('.hero-desc').innerText = t.heroDesc;
+            document.querySelector('.btn-view-menu').innerText = t.btnMenu;
+            document.querySelector('.btn-map').innerHTML = `<i class="fa-solid fa-location-dot text-gold"></i> ${t.btnMap}`;
+
+            document.querySelector('.access-title').innerText = t.accTitle;
+            document.querySelector('.access-desc').innerText = t.accDesc;
+            document.querySelector('.wifi-title').innerText = t.wifiTitle;
+            document.querySelector('.wifi-desc').innerText = t.wifiDesc;
+            document.querySelector('.bar-title').innerText = t.barTitle;
+            document.querySelector('.bar-desc').innerText = t.barDesc;
+            document.querySelector('.pet-title').innerText = t.petTitle;
+            document.querySelector('.pet-desc').innerText = t.petDesc;
+
+            document.querySelector('.menu-tag').innerText = t.menuTag;
+            document.querySelector('.menu-heading').innerText = t.menuHeading;
+
+            document.querySelector('.facilities-tag').innerText = t.facTag;
+            document.querySelector('.facilities-heading').innerText = t.facHeading;
+            document.querySelector('.facilities-acc-title').innerText = t.facAcc;
+            document.querySelector('.facilities-highlights-title').innerText = t.facHigh;
+            document.querySelector('.facilities-payment-title').innerText = t.facPay;
+
+            document.querySelector('.res-tag').innerText = t.resTag;
+            document.querySelector('.res-heading').innerText = t.resHeading;
+            document.querySelector('.res-desc').innerText = t.resDesc;
+            document.querySelector('.name-label').innerText = t.nameLbl;
+            document.querySelector('.phone-label').innerText = t.phoneLbl;
+            document.querySelector('.date-label').innerText = t.dateLbl;
+            document.querySelector('.time-label').innerText = t.timeLbl;
+            document.querySelector('.guests-label').innerText = t.guestsLbl;
+            document.querySelector('.notes-label').innerText = t.notesLbl;
+            document.querySelector('.submit-btn').innerText = t.submitBtn;
+            document.querySelector('.footer-desc').innerText = t.footerDesc;
+        }
+
+        function handleReservation(e) {
+            e.preventDefault();
+            alert("Terima kasih! Permintaan reservasi Anda telah berhasil dikirim. Kami akan segera menghubungi Anda untuk konfirmasi.");
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
